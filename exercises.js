@@ -6,6 +6,29 @@
  * ie: "cat" => "tac"
  */
 
+//using array and sting methods
+// function firstReverse(str) {
+//   if (typeof str == "string") {
+//     return str.split("").reverse().join("");
+//   }else{
+//     return  null;
+//   }
+// }
+
+
+//using a reverse for loop
+function firstReverse(str) {
+  var backwards = "";
+  if(typeof str === "string"){
+    for(var i = str.length-1; i>=0; i--){
+      backwards += str[i];
+    }
+  }else{
+    return null;
+  }
+    return backwards;
+}
+
  /** Function: alphaOrder
  * The function will take the str parameter being passed in and
  * return the string in alphabetical order
@@ -13,6 +36,8 @@
  * @return {string} in alphabetical order
  * ie: "cake" => "acek"
  */
+
+ 
 
  /** Function: vowelCount
  * The function will take the str parameter being passed in and
@@ -56,9 +81,9 @@
  */
 
 module.exports = {
-    firstReverse: null,
+    firstReverse: firstReverse,
     alphaOrder: null,
     vowelCount: null,
     timeConvert: null,
-    repeatString: null
-}
+    repeatString: null 
+};
