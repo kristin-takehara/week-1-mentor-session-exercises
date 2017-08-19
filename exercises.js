@@ -6,9 +6,9 @@
  * ie: "cat" => "tac"
  */
 
-//using array and sting methods
+//Opion 1) using array and sting methods
 // function firstReverse(str) {
-//   if (typeof str == "string") {
+//   if (typeof str === "string") {
 //     return str.split("").reverse().join("");
 //   }else{
 //     return  null;
@@ -16,7 +16,7 @@
 // }
 
 
-//using a reverse for loop
+//Option 2) using a reverse for loop
 function firstReverse(str) {
   var backwards = "";
   if(typeof str === "string"){
@@ -37,7 +37,13 @@ function firstReverse(str) {
  * ie: "cake" => "acek"
  */
 
- 
+function alphaOrder(str) {
+  if(typeof str !== "string"){
+    return null;
+    }else{
+    return str.split("").sort().join("");
+    }
+}
 
  /** Function: vowelCount
  * The function will take the str parameter being passed in and
@@ -47,6 +53,22 @@ function firstReverse(str) {
  * ie: "oreo" => 3
  */
 
+function vowelCount(str) {
+  var vowelsCount = 0; //creates container to count #vowels.
+  //turns the @param into a string using .toString() method.
+  if(typeof str !== "string") {
+    return null;
+  }
+  var splitStr = str.split("");
+//loop through the string
+  for (var i = 0; i < splitStr.length; i++) {
+  //if a vowel, add to vowel count
+    if(splitStr[i] === "a" || splitStr[i] === "e" || splitStr[i] === "i" || splitStr[i] === "o" || splitStr[i] === "u") {
+      vowelsCount += 1;
+    }
+   } 
+    return vowelsCount;
+}
  /** Function: timeConvert
  * The function will take the str parameter representing the amount of minutes being passed in and
  * return the number of hours and minutes. Seperate the number of hours
@@ -55,6 +77,17 @@ function firstReverse(str) {
  * @return {string} as hours:minutes
  * ie: 68 => 1:8
  */
+
+ function timeConvert(mins){
+  if(typeof mins !== "number"){
+    return null;
+  }else{
+  var hours = Math.floor(mins / 60);
+  var minutes = mins % 60;
+  return hours + ":" + minutes;
+  } 
+ }
+ console.log(timeConvert(68));
 
  /** Function: repeatString
  * The function will take in two parameters and repeat a given string (first argument)
@@ -65,6 +98,17 @@ function firstReverse(str) {
  * i.e repeatString("money", 3) => "moneymoneymoney".
  */
 
+function repeatString(str, N) {
+    if (typeof str !== "string" || typeof N !== "number"){
+    return null;
+  }else if(N < 0){
+    return "";
+  }else{
+  string = str.repeat(N);
+  }
+  return string;
+}
+console.log(repeatString("zomg", 3));
 
 /**
  * Below here we see a module.exports which is set to an object with a bunch of keys.
@@ -82,8 +126,8 @@ function firstReverse(str) {
 
 module.exports = {
     firstReverse: firstReverse,
-    alphaOrder: null,
-    vowelCount: null,
-    timeConvert: null,
-    repeatString: null 
+    alphaOrder: alphaOrder,
+    vowelCount: vowelCount,
+    timeConvert: timeConvert,
+    repeatString: repeatString
 };
